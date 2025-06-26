@@ -91,6 +91,17 @@ const PhilosophySection = () => {
 
   return (
     <section id="philosophy" className="py-24 bg-bg-secondary relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: 'url(https://images7.alphacoders.com/105/1054068.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      />
+
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-10 right-20 w-64 h-64 bg-accent-necromancy/30 rounded-full blur-3xl"></div>

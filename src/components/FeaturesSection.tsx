@@ -41,23 +41,32 @@ const FeaturesSection = () => {
     }
   ];
 
-  // Mock data for the assessment chart
+  // Mock data for the assessment chart - 6 domains
   const domainScores = [
     { domain: 'Physical', score: 7.2 },
     { domain: 'Mental', score: 8.5 },
     { domain: 'Emotional', score: 6.8 },
     { domain: 'Social', score: 7.9 },
     { domain: 'Financial', score: 6.5 },
-    { domain: 'Creative', score: 8.1 },
-    { domain: 'Spiritual', score: 7.3 },
-    { domain: 'Knowledge', score: 8.7 }
+    { domain: 'Spiritual', score: 7.3 }
   ];
 
   return (
     <section id="features" className="py-24 bg-bg-primary relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: 'url(https://images4.alphacoders.com/136/1369363.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      />
+
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-accent-electric/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-20 left-10 w-96 h-96 bg-accent-electric/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-80 h-80 bg-accent-energy/20 rounded-full blur-3xl"></div>
       </div>
 
@@ -82,7 +91,7 @@ const FeaturesSection = () => {
                 </div>
                 
                 <h3 className="text-3xl lg:text-4xl font-bold">
-                  8-Domain Life Assessment
+                  6-Domain Life Assessment
                 </h3>
                 
                 <p className="text-xl text-text-secondary leading-relaxed">
@@ -111,7 +120,7 @@ const FeaturesSection = () => {
               <div className="relative">
                 <div className="bg-bg-secondary/80 rounded-2xl p-6">
                   <div className="text-center mb-6">
-                    <div className="text-4xl font-bold text-accent-electric mb-2">8.2</div>
+                    <div className="text-4xl font-bold text-accent-electric mb-2">7.5</div>
                     <div className="text-text-tertiary">Overall Score</div>
                   </div>
                   
@@ -120,7 +129,7 @@ const FeaturesSection = () => {
                     {domainScores.map((item, index) => {
                       const colors = [
                         'accent-electric', 'accent-energy', 'accent-growth', 'accent-wisdom',
-                        'accent-gold', 'accent-electric', 'accent-energy', 'accent-growth'
+                        'accent-gold', 'accent-electric'
                       ];
                       const percentage = (item.score / 10) * 100;
                       
@@ -169,8 +178,7 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="bg-bg-elevated/30 glass-effect rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-500 group animate-float"
-              style={{animationDelay: `${index * 0.3}s`}}
+              className="bg-bg-elevated/30 glass-effect rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-500 group"
             >
               {/* Icon */}
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">

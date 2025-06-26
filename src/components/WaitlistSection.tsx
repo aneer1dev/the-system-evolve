@@ -18,12 +18,10 @@ const WaitlistSection = () => {
   const focusOptions = [
     'Physical Power',
     'Mental Strength',
-    'Emotional Balance',
+    'Emotional Balance',  
     'Social Connections',
     'Financial Growth',
-    'Creative Expression',
-    'Spiritual Development',
-    'Knowledge Mastery'
+    'Spiritual Development'
   ];
 
   const benefits = [
@@ -36,6 +34,17 @@ const WaitlistSection = () => {
   if (isSubmitted) {
     return (
       <section id="waitlist" className="py-24 bg-bg-secondary relative overflow-hidden necromancer-particles">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: 'url(https://images8.alphacoders.com/114/1143262.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+          }}
+        />
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-2xl mx-auto text-center">
             <div className="w-20 h-20 bg-accent-shadow rounded-full flex items-center justify-center mx-auto mb-8 animate-shadow-pulse">
@@ -65,9 +74,20 @@ const WaitlistSection = () => {
 
   return (
     <section id="waitlist" className="py-24 bg-bg-secondary relative overflow-hidden necromancer-particles">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: 'url(https://images8.alphacoders.com/114/1143262.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      />
+
       {/* Shadow Realm Background Effects */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 left-20 w-96 h-96 bg-accent-shadow/30 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-10 left-20 w-96 h-96 bg-accent-shadow/30 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 right-20 w-80 h-80 bg-accent-monarch/20 rounded-full blur-3xl"></div>
       </div>
 
@@ -75,15 +95,13 @@ const WaitlistSection = () => {
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            Join the <span className="shadow-gradient-text">Shadow Guild</span>
+            Limited Shadow Hunter <span className="shadow-gradient-text">recruitment ongoing</span>
           </h2>
-          <p className="text-xl lg:text-2xl text-text-secondary">
-            Limited Shadow Hunter recruitment ongoing
-          </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
+            
             {/* Left - Registration Form */}
             <div className="bg-bg-elevated/30 shadow-glass rounded-3xl p-8 border border-accent-shadow/20">
               <div className="mb-6">
@@ -161,8 +179,7 @@ const WaitlistSection = () => {
                 {benefits.map((benefit, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-4 p-4 bg-bg-elevated/20 rounded-xl hover:bg-bg-elevated/30 transition-colors animate-float shadow-glass border border-accent-shadow/10"
-                    style={{animationDelay: `${index * 0.2}s`}}
+                    className="flex items-center gap-4 p-4 bg-bg-elevated/20 rounded-xl hover:bg-bg-elevated/30 transition-colors shadow-glass border border-accent-shadow/10"
                   >
                     <span className="text-2xl">{benefit.icon}</span>
                     <span className="text-text-secondary text-lg">{benefit.text}</span>

@@ -23,7 +23,7 @@ const SystemTab = () => {
   const notionLink = "https://notion.so/your-system-template"; // Replace with actual link
 
   return (
-    <section className="py-16 bg-bg-primary relative overflow-hidden">
+    <section className="py-16 bg-bg-primary relative overflow-hidden" data-section="system-tab">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-2xl mx-auto text-center">
           <div className="bg-gradient-to-r from-bg-elevated to-bg-secondary rounded-2xl p-8 shadow-glass border border-accent-shadow/20">

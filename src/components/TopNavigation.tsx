@@ -10,6 +10,24 @@ const TopNavigation = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Track active section based on scroll position
+      const sections = ['philosophy', 'features', 'preview', 'community'];
+      const scrollPosition = window.scrollY + 200;
+      
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = window.scrollY + rect.top;
+          const elementBottom = elementTop + rect.height;
+          
+          if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+            setActiveSection(sectionId);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -172,7 +190,7 @@ const TopNavigation = () => {
       </nav>
       
       {/* Spacer to prevent content overlap */}
-      <div className="h-20"></div>
+      <div className="h-16"></div>
     </>
   );
 };

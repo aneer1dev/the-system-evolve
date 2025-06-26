@@ -43,6 +43,17 @@ const CommunitySection = () => {
 
   return (
     <section id="community" className="py-24 bg-bg-primary relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: 'url(https://wallpapercave.com/wp/wp13947696.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      />
+
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-10 left-20 w-72 h-72 bg-accent-mana/30 rounded-full blur-3xl"></div>
@@ -53,11 +64,8 @@ const CommunitySection = () => {
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            Join The <span className="shadow-gradient-text">Shadow Guild</span>
+            Real growth from <span className="shadow-gradient-text">real hunters</span>
           </h2>
-          <p className="text-xl lg:text-2xl text-text-secondary">
-            Real growth from real hunters
-          </p>
         </div>
 
         {/* Testimonial Cards */}

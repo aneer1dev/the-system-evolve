@@ -51,6 +51,53 @@ const FeaturesSection = () => {
     { domain: 'Spiritual', score: 7.3 }
   ];
 
+  const CircularProgress = ({ score, domain, index }) => {
+    const colors = [
+      'accent-electric', 'accent-energy', 'accent-growth', 
+      'accent-wisdom', 'accent-gold', 'accent-mana'
+    ];
+    const percentage = (score / 10) * 100;
+    const strokeDasharray = 2 * Math.PI * 28; // 2 * PI * radius
+    const strokeDashoffset = strokeDasharray - (strokeDasharray * percentage) / 100;
+    
+    return (
+      <div className="text-center">
+        <div className="relative w-16 h-16 mx-auto mb-2">
+          <svg className="w-16 h-16 transform -rotate-90">
+            <circle
+              cx="32"
+              cy="32"
+              r="28"
+              stroke="currentColor"
+              strokeWidth="4"
+              fill="none"
+              className="text-bg-elevated"
+            />
+            <circle
+              cx="32"
+              cy="32"
+              r="28"
+              stroke={`var(--${colors[index]})`}
+              strokeWidth="4"
+              fill="none"
+              strokeDasharray={strokeDasharray}
+              strokeDashoffset={strokeDashoffset}
+              className="transition-all duration-1000 ease-out"
+              style={{
+                animationDelay: `${index * 0.2}s`,
+                strokeLinecap: 'round'
+              }}
+            />
+          </svg>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-xs font-semibold text-white">{score}</span>
+          </div>
+        </div>
+        <div className="text-xs text-text-tertiary">{domain}</div>
+      </div>
+    );
+  };
+
   return (
     <section id="features" className="py-24 bg-bg-primary relative overflow-hidden">
       {/* Background Image */}
@@ -126,46 +173,14 @@ const FeaturesSection = () => {
                   
                   {/* Domain Progress Rings */}
                   <div className="grid grid-cols-2 gap-4">
-                    {domainScores.map((item, index) => {
-                      const colors = [
-                        'accent-electric', 'accent-energy', 'accent-growth', 'accent-wisdom',
-                        'accent-gold', 'accent-electric'
-                      ];
-                      const percentage = (item.score / 10) * 100;
-                      
-                      return (
-                        <div key={item.domain} className="text-center">
-                          <div className="relative w-16 h-16 mx-auto mb-2">
-                            <svg className="w-16 h-16 transform -rotate-90">
-                              <circle
-                                cx="32"
-                                cy="32"
-                                r="28"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                                fill="none"
-                                className="text-bg-elevated"
-                              />
-                              <circle
-                                cx="32"
-                                cy="32"
-                                r="28"
-                                stroke={`var(--${colors[index]})`}
-                                strokeWidth="4"
-                                fill="none"
-                                strokeDasharray={`${percentage * 1.76} 176`}
-                                className="transition-all duration-1000"
-                                style={{animationDelay: `${index * 0.2}s`}}
-                              />
-                            </svg>
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <span className="text-xs font-semibold">{item.score}</span>
-                            </div>
-                          </div>
-                          <div className="text-xs text-text-tertiary">{item.domain}</div>
-                        </div>
-                      );
-                    })}
+                    {domainScores.map((item, index) => (
+                      <CircularProgress
+                        key={item.domain}
+                        score={item.score}
+                        domain={item.domain}
+                        index={index}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
@@ -178,7 +193,7 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="bg-bg-elevated/30 glass-effect rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-500 group"
+              className="bg-bg-elevated/30 glass-effect rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-500 group relative"
             >
               {/* Icon */}
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">

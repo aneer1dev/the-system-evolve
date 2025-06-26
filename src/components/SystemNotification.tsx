@@ -42,13 +42,13 @@ const SystemNotification = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[9999] animate-scale-in">
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
       {/* Background Overlay */}
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={handleClose} />
       
       {/* Notification Panel */}
       <div 
-        className="relative bg-gradient-to-br from-bg-elevated to-bg-secondary border-2 border-accent-shadow/50 rounded-2xl p-8 shadow-2xl max-w-md mx-4"
+        className="relative bg-gradient-to-br from-bg-elevated to-bg-secondary border-2 border-accent-shadow/50 rounded-2xl p-8 shadow-2xl max-w-md w-full mx-4 animate-scale-in"
         style={{
           backgroundImage: 'url(https://wallpapercave.com/wp/wp13598317.png)',
           backgroundSize: 'cover',
@@ -59,13 +59,13 @@ const SystemNotification = () => {
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 text-text-tertiary hover:text-white transition-colors"
+          className="absolute top-4 right-4 text-text-tertiary hover:text-white transition-colors z-10"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* System Alert Header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-6 relative z-10">
           <div className="bg-accent-danger/20 text-accent-danger px-3 py-1 rounded-full text-sm font-bold border border-accent-danger/30 inline-block mb-4">
             SYSTEM ALERT
           </div>
@@ -79,7 +79,7 @@ const SystemNotification = () => {
         </div>
 
         {/* Message */}
-        <div className="text-center space-y-4 mb-6">
+        <div className="text-center space-y-4 mb-6 relative z-10">
           <p className="text-text-secondary">
             A powerful transformation opportunity has appeared
           </p>
@@ -92,14 +92,14 @@ const SystemNotification = () => {
         </div>
 
         {/* Question */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-6 relative z-10">
           <p className="text-white font-semibold">
             Will you accept the awakening?
           </p>
         </div>
 
         {/* Actions */}
-        <div className="space-y-3">
+        <div className="space-y-3 relative z-10">
           <button
             onClick={handleJoin}
             className="w-full bg-accent-shadow text-white px-6 py-3 rounded-xl font-semibold hover:bg-accent-shadow/90 transition-all duration-300 flex items-center justify-center gap-2 animate-shadow-pulse"

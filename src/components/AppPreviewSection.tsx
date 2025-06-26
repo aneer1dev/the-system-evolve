@@ -180,40 +180,7 @@ const AppPreviewSection = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             
-            {/* Left - Feature Description */}
-            <div className="space-y-8">
-              <div className="bg-bg-elevated/30 shadow-glass rounded-2xl p-6">
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Interactive Dashboard
-                </h3>
-                <p className="text-text-secondary leading-relaxed mb-6">
-                  Navigate through different aspects of your growth journey. 
-                  Each tab provides unique insights and tools for systematic improvement.
-                </p>
-                
-                {/* Tab Description */}
-                <div className="space-y-3">
-                  {tabs.map((tab) => (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveTab(tab.id)}
-                      className={`w-full text-left p-3 rounded-xl transition-all duration-300 ${
-                        activeTab === tab.id
-                          ? 'bg-accent-shadow text-white'
-                          : 'bg-bg-elevated/50 text-text-secondary hover:bg-bg-elevated/70'
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="text-lg">{tab.icon}</span>
-                        <span className="font-medium">{tab.name}</span>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right - iPhone Mockup */}
+            {/* Left - iPhone Mockup */}
             <div className="flex justify-center">
               <div className="relative">
                 {/* iPhone Frame */}
@@ -256,6 +223,39 @@ const AppPreviewSection = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right - Interactive Dashboard */}
+            <div className="space-y-8">
+              <div className="bg-bg-elevated/30 shadow-glass rounded-2xl p-6">
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Interactive Dashboard
+                </h3>
+                <p className="text-text-secondary leading-relaxed mb-6">
+                  Navigate through different aspects of your growth journey. 
+                  Each tab provides unique insights and tools for systematic improvement.
+                </p>
+                
+                {/* Tab Description */}
+                <div className="space-y-3">
+                  {tabs.map((tab) => (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`w-full text-left p-3 rounded-xl transition-all duration-300 ${
+                        activeTab === tab.id
+                          ? 'bg-accent-shadow text-white'
+                          : 'bg-bg-elevated/50 text-text-secondary hover:bg-bg-elevated/70'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-lg">{tab.icon}</span>
+                        <span className="font-medium">{tab.name}</span>
+                      </div>
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>

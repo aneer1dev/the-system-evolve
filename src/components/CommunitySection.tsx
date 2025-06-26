@@ -9,7 +9,7 @@ const CommunitySection = () => {
       level: "S-Rank Hunter",
       quote: "Let's get stronger together! The System transformed my approach to growth.",
       growth: "Physical E→S, Mental D→S+",
-      avatar: "https://i.pinimg.com/564x/9a/9b/4c/9a9b4c8e9c5f4a4b4c8a9b5c4d8e9f4a.jpg", // Jinwoo avatar
+      avatar: "https://cdn.myanimelist.net/images/characters/8/531267.jpg",
       bgColor: "bg-accent-shadow/20",
       borderColor: "border-accent-shadow"
     },
@@ -19,17 +19,17 @@ const CommunitySection = () => {
       level: "S-Rank Hunter", 
       quote: "Don't be late for the training! Systematic growth beats random effort every time.",
       growth: "Physical B→S, Social C→A+",
-      avatar: "https://i.pinimg.com/564x/5c/8d/9e/5c8d9e4f5a6b7c8d9e0f1a2b3c4d5e6f.jpg", // Hae-In avatar
+      avatar: "https://64.media.tumblr.com/fec2ecd32a2bdbac13abaa08eeb8207b/e540faf1728a9f5c-e5/s1280x1920/c70213001330dee61462459d6acb3221d8ea4a6c.jpg",
       bgColor: "bg-accent-mana/20",
       borderColor: "border-accent-mana"
     },
     {
-      name: "Marcus Chen",
+      name: "Issei",
       title: "Philosophy Student",
       level: "Level 18",
       quote: "Finally, systematic philosophical growth measurement that actually works!",
       growth: "Mental C→A, Spiritual D→B+",
-      avatar: "/api/placeholder/60/60",
+      avatar: "https://wallpapercave.com/wp/wp2063689.png",
       bgColor: "bg-accent-necromancy/20",
       borderColor: "border-accent-necromancy"
     }
@@ -81,7 +81,7 @@ const CommunitySection = () => {
                   <img
                     src={testimonial.avatar}
                     alt={testimonial.name}
-                    className="w-12 h-12 rounded-full border-2 border-accent-shadow/50"
+                    className="w-12 h-12 rounded-full border-2 border-accent-shadow/50 object-cover"
                     onError={(e) => {
                       e.currentTarget.src = "/api/placeholder/60/60";
                     }}

@@ -31,8 +31,19 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-bg-primary border-t border-bg-elevated/50 py-16">
-      <div className="container mx-auto px-6">
+    <footer className="bg-bg-primary border-t border-bg-elevated/50 py-16 relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: 'url(https://images5.alphacoders.com/135/1358214.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      />
+
+      <div className="container mx-auto px-6 relative z-10">
         {/* Main Footer Content */}
         <div className="grid lg:grid-cols-4 gap-12 mb-12">
           {/* Logo & Tagline */}

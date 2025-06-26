@@ -5,16 +5,27 @@ import { Play, ArrowRight, Download, Smartphone } from 'lucide-react';
 const HeroSection = () => {
   const domains = [
     'Physical', 'Mental', 'Emotional', 'Social', 
-    'Financial', 'Creative', 'Spiritual', 'Knowledge'
+    'Financial', 'Spiritual'
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-elevated relative overflow-hidden necromancer-particles">
+    <section className="min-h-screen bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-elevated relative overflow-hidden">
+      {/* Solo Leveling Background Image */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: 'url(https://4kwallpapers.com/images/walls/thumbs_3t/15351.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      ></div>
+
       {/* Solo Leveling Background Effects */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-accent-shadow/30 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-monarch/20 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent-necromancy/10 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-accent-shadow/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-monarch/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent-necromancy/10 rounded-full blur-3xl"></div>
       </div>
 
       {/* Shadow Hunter Portal Effect */}
@@ -24,7 +35,7 @@ const HeroSection = () => {
         <div className="absolute bottom-1/3 right-1/4 w-48 h-48 border border-accent-monarch/20 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
       </div>
 
-      <div className="container mx-auto px-6 py-20 relative z-10">
+      <div className="container mx-auto px-6 py-12 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           {/* Left Content - 55% */}
           <div className="lg:col-span-7 space-y-8">
@@ -42,7 +53,7 @@ const HeroSection = () => {
               </h1>
               
               <p className="text-xl lg:text-2xl text-text-secondary leading-relaxed max-w-2xl">
-                Rise from E-Rank to S-Rank across 8 life domains. 
+                Rise from E-Rank to S-Rank across 6 life domains. 
                 Track your evolution, unlock hidden abilities, and become the ultimate version of yourself.
               </p>
             </div>
@@ -50,7 +61,7 @@ const HeroSection = () => {
             {/* Power Level Stats */}
             <div className="flex items-center gap-8 py-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent-shadow animate-shadow-pulse">8</div>
+                <div className="text-3xl font-bold text-accent-shadow animate-shadow-pulse">6</div>
                 <div className="text-sm text-text-tertiary">Power Domains</div>
               </div>
               <div className="w-px h-12 bg-accent-shadow/30"></div>
@@ -113,29 +124,28 @@ const HeroSection = () => {
 
                 {/* Domain Power Nodes */}
                 {domains.map((domain, index) => {
-                  const angle = (index * 45) - 90;
+                  const angle = (index * 60) - 90;
                   const radius = 140;
                   const x = Math.cos(angle * Math.PI / 180) * radius;
                   const y = Math.sin(angle * Math.PI / 180) * radius;
                   
                   const colors = [
-                    'accent-shadow', 'accent-monarch', 'accent-mana', 'accent-necromancy',
-                    'accent-strength', 'accent-danger', 'accent-shadow', 'accent-mana'
+                    'accent-shadow', 'accent-monarch', 'accent-mana',
+                    'accent-strength', 'accent-danger', 'accent-necromancy'
                   ];
 
-                  const ranks = ['S', 'A', 'B', 'A', 'S', 'B', 'A', 'S'];
+                  const ranks = ['S', 'A', 'B', 'A', 'S', 'A'];
 
                   return (
                     <div
                       key={domain}
-                      className="absolute w-16 h-16 rounded-full flex flex-col items-center justify-center text-xs font-bold text-center leading-tight animate-float shadow-glass border"
+                      className="absolute w-16 h-16 rounded-full flex flex-col items-center justify-center text-xs font-bold text-center leading-tight shadow-glass border"
                       style={{
                         left: `calc(50% + ${x}px - 2rem)`,
                         top: `calc(50% + ${y}px - 2rem)`,
                         backgroundColor: `var(--${colors[index]})`,
                         color: 'white',
                         borderColor: `var(--${colors[index]})`,
-                        animationDelay: `${index * 0.3}s`
                       }}
                     >
                       <span className="text-[10px]">{domain}</span>
@@ -147,8 +157,8 @@ const HeroSection = () => {
                 {/* Mana Flow Lines */}
                 <svg className="absolute inset-0 w-full h-full" style={{animationDuration: '20s'}}>
                   {domains.map((_, index) => {
-                    const angle1 = (index * 45) - 90;
-                    const angle2 = ((index + 1) % 8 * 45) - 90;
+                    const angle1 = (index * 60) - 90;
+                    const angle2 = ((index + 1) % 6 * 60) - 90;
                     const radius = 140;
                     const x1 = Math.cos(angle1 * Math.PI / 180) * radius + 192;
                     const y1 = Math.sin(angle1 * Math.PI / 180) * radius + 192;

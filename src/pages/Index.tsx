@@ -1,6 +1,6 @@
 
 import React from 'react';
-import FloatingNavigation from '../components/FloatingNavigation';
+import TopNavigation from '../components/TopNavigation';
 import HeroSection from '../components/HeroSection';
 import PhilosophySection from '../components/PhilosophySection';
 import FeaturesSection from '../components/FeaturesSection';
@@ -12,7 +12,7 @@ import Footer from '../components/Footer';
 const Index = () => {
   return (
     <div className="min-h-screen bg-bg-primary">
-      <FloatingNavigation />
+      <TopNavigation />
       <HeroSection />
       <PhilosophySection />
       <FeaturesSection />

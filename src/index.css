@@ -3,34 +3,36 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Color Palette for The System */
+/* Solo Leveling Inspired Color Palette */
 @layer base {
   :root {
-    /* Primary Dark Theme */
-    --bg-primary: #0A0E17;
-    --bg-secondary: #1A1F2E;
-    --bg-elevated: #2A3441;
+    /* Primary Dark Theme - Solo Leveling Style */
+    --bg-primary: #0B0D1A;
+    --bg-secondary: #1A1B2E;
+    --bg-elevated: #2D2E4F;
     
-    /* High-Contrast Accents */
-    --accent-electric: #00D9FF;
-    --accent-energy: #FF6B6B;
-    --accent-growth: #4ECDC4;
-    --accent-wisdom: #A855F7;
-    --accent-gold: #FFD93D;
+    /* Solo Leveling Accents */
+    --accent-shadow: #8B5CF6;     /* Purple shadow power */
+    --accent-monarch: #3B82F6;    /* Blue monarch energy */
+    --accent-mana: #06B6D4;       /* Cyan mana glow */
+    --accent-strength: #F59E0B;   /* Golden strength */
+    --accent-necromancy: #6366F1; /* Indigo necromancy */
+    --accent-danger: #EF4444;     /* Red danger */
     
     /* Premium Text */
     --text-primary: #FFFFFF;
     --text-secondary: #E2E8F0;
     --text-tertiary: #94A3B8;
+    --text-glow: #8B5CF6;
     
     /* Glassmorphism */
-    --glass-bg: rgba(42, 52, 65, 0.8);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(45, 46, 79, 0.8);
+    --glass-border: rgba(139, 92, 246, 0.2);
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, #0A0E17 0%, #1A1F2E 50%, #2A3441 100%);
-    --gradient-accent: linear-gradient(135deg, #00D9FF 0%, #A855F7 100%);
-    --gradient-energy: linear-gradient(90deg, #FF6B6B 0%, #FFD93D 100%);
+    --gradient-hero: linear-gradient(135deg, #0B0D1A 0%, #1A1B2E 50%, #2D2E4F 100%);
+    --gradient-shadow: linear-gradient(135deg, #8B5CF6 0%, #3B82F6 100%);
+    --gradient-power: linear-gradient(90deg, #8B5CF6 0%, #06B6D4 100%);
 
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
@@ -103,53 +105,97 @@
     background: var(--bg-primary);
     color: var(--text-primary);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+    background-attachment: fixed;
   }
 }
 
-/* Custom animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+/* Solo Leveling inspired animations */
+@keyframes shadowPulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6), 0 0 80px rgba(139, 92, 246, 0.2);
+  }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 217, 255, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(0, 217, 255, 0.6); }
+@keyframes monarchGlow {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.7), 0 0 60px rgba(59, 130, 246, 0.3);
+  }
 }
 
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes manaFlow {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+@keyframes levelUp {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(5deg); }
+  50% { transform: scale(1.2) rotate(-5deg); }
+  75% { transform: scale(1.1) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); }
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+.animate-shadow-pulse {
+  animation: shadowPulse 3s ease-in-out infinite;
 }
 
-.animate-rotate {
-  animation: rotate 20s linear infinite;
+.animate-monarch-glow {
+  animation: monarchGlow 2s ease-in-out infinite;
 }
 
-/* Glassmorphism utility */
-.glass-effect {
+.animate-mana-flow {
+  animation: manaFlow 4s ease-in-out infinite;
+}
+
+.animate-level-up {
+  animation: levelUp 0.8s ease-out;
+}
+
+/* Solo Leveling Glassmorphism */
+.shadow-glass {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.1);
 }
 
-/* Gradient text utility */
-.gradient-text {
-  background: var(--gradient-accent);
+/* Power gradient text */
+.shadow-gradient-text {
+  background: var(--gradient-shadow);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Custom scrollbar */
+/* Monarch energy effect */
+.monarch-energy {
+  position: relative;
+  overflow: hidden;
+}
+
+.monarch-energy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+  animation: manaFlow 3s ease-in-out infinite;
+}
+
+/* Custom scrollbar - Shadow theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -159,11 +205,34 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-electric);
+  background: var(--accent-shadow);
   border-radius: 4px;
 }
 
-/* Organic shapes utility */
-.organic-shape {
-  clip-path: polygon(0% 15%, 15% 0%, 85% 0%, 100% 20%, 100% 80%, 85% 100%, 15% 100%, 0% 85%);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-monarch);
+}
+
+/* Shadow Hunter shapes */
+.shadow-shape {
+  clip-path: polygon(10% 0%, 90% 0%, 100% 25%, 100% 75%, 90% 100%, 10% 100%, 0% 75%, 0% 25%);
+}
+
+/* Necromancer particle effects */
+.necromancer-particles {
+  position: relative;
+}
+
+.necromancer-particles::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
 }

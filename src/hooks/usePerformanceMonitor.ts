@@ -6,7 +6,17 @@ export const usePerformanceMonitor = () => {
     // Monitor Core Web Vitals
     const observer = new PerformanceObserver((list) => {
       list.getEntries().forEach((entry) => {
-        console.log(`${entry.name}: ${entry.value}ms`);
+        // Handle different types of performance entries
+        if ('value' in entry) {
+          // For entries that have a value property (like LCP, FID, CLS)
+          console.log(`${entry.name}: ${entry.value}ms`);
+        } else if ('duration' in entry) {
+          // For entries that have a duration property (like navigation, paint)
+          console.log(`${entry.name}: ${entry.duration}ms`);
+        } else {
+          // For other entries, just log the name
+          console.log(`${entry.name}: ${entry.startTime}ms`);
+        }
       });
     });
 

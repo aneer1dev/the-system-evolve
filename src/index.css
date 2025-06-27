@@ -111,8 +111,9 @@
     color: var(--text-primary);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-image: 
-      radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+      radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
     background-attachment: fixed;
   }
   
@@ -121,33 +122,52 @@
   }
 }
 
-/* Optimized Solo Leveling animations - reduced for performance */
+/* Solo Leveling inspired animations */
 @keyframes shadowPulse {
   0%, 100% { 
-    box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), 0 0 40px rgba(139, 92, 246, 0.1);
   }
   50% { 
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6), 0 0 80px rgba(139, 92, 246, 0.2);
   }
 }
 
 @keyframes monarchGlow {
   0%, 100% { 
-    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
   }
   50% { 
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.7), 0 0 60px rgba(59, 130, 246, 0.3);
   }
 }
 
+@keyframes manaFlow {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes levelUp {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(5deg); }
+  50% { transform: scale(1.2) rotate(-5deg); }
+  75% { transform: scale(1.1) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
 @keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(10px); }
+  0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes scaleIn {
-  0% { transform: scale(0.95); opacity: 0; }
+  0% { transform: scale(0.9); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 .animate-shadow-pulse {
@@ -158,25 +178,37 @@
   animation: monarchGlow 2s ease-in-out infinite;
 }
 
+.animate-mana-flow {
+  animation: manaFlow 4s ease-in-out infinite;
+}
+
+.animate-level-up {
+  animation: levelUp 0.8s ease-out;
+}
+
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: fadeIn 1s ease-out forwards;
 }
 
 .animate-scale-in {
   animation: scaleIn 0.3s ease-out forwards;
 }
 
-/* Optimized Glassmorphism */
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+/* Solo Leveling Glassmorphism */
 .shadow-glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
-  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.1);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.1);
 }
 
 .glass-effect {
   background: rgba(45, 46, 79, 0.6);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
@@ -195,9 +227,26 @@
   background-clip: text;
 }
 
-/* Optimized scrollbar */
+/* Monarch energy effect */
+.monarch-energy {
+  position: relative;
+  overflow: hidden;
+}
+
+.monarch-energy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+  animation: manaFlow 3s ease-in-out infinite;
+}
+
+/* Custom scrollbar - Shadow theme */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -206,25 +255,32 @@
 
 ::-webkit-scrollbar-thumb {
   background: var(--accent-shadow);
-  border-radius: 3px;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-monarch);
 }
 
 /* Performance optimizations */
 img {
   content-visibility: auto;
-  contain-intrinsic-size: 1px 400px;
+  contain-intrinsic-size: 1px 5000px;
 }
 
-/* Lazy loading and optimization */
+/* Smooth scrolling experience */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+/* Optimize background images */
 .bg-image {
   will-change: transform;
   transform: translateZ(0);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
-/* Reduce motion for better performance */
+/* Optimize animations */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -236,9 +292,4 @@ img {
 /* Optimize layout shifts */
 .container {
   contain: layout style paint;
-}
-
-/* Optimize critical rendering path */
-.critical-resource {
-  font-display: swap;
 }

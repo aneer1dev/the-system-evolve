@@ -1,222 +1,205 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { Zap, TrendingUp, Trophy, Target, Users, Brain } from 'lucide-react';
+import OptimizedImage from './OptimizedImage';
 
 const FeaturesSection = () => {
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
+
   const features = [
     {
-      title: "Daily Quests",
-      icon: "⚔️",
-      description: "Gamified habit tracking with XP rewards and streak bonuses",
-      color: "accent-electric"
+      icon: <Zap className="w-8 h-8" />,
+      title: "Physical Evolution",
+      description: "Track workouts, nutrition, and energy levels. Monitor your body's transformation with precision.",
+      color: "accent-strength",
+      progress: 85
     },
     {
-      title: "Skill Trees", 
-      icon: "🌳",
-      description: "Unlock abilities with earned points across all life domains",
-      color: "accent-growth"
+      icon: <Brain className="w-8 h-8" />,
+      title: "Mental Mastery",
+      description: "Develop focus, learning capacity, and cognitive strength through systematic practice.",
+      color: "accent-shadow",
+      progress: 78
     },
     {
-      title: "Progress Analytics",
-      icon: "📈", 
-      description: "Beautiful growth visualizations and trend analysis",
-      color: "accent-wisdom"
+      icon: <Target className="w-8 h-8" />,
+      title: "Emotional Intelligence",
+      description: "Build resilience and emotional awareness through mindful tracking and reflection.",
+      color: "accent-danger",
+      progress: 92
     },
     {
-      title: "Shadow Work",
-      icon: "🔮",
-      description: "Private reflection space for deep introspection",
-      color: "accent-energy"
+      icon: <Users className="w-8 h-8" />,
+      title: "Social Connections",
+      description: "Strengthen relationships and build meaningful connections systematically.",
+      color: "accent-mana",
+      progress: 73
     },
     {
-      title: "Guild System",
-      icon: "🛡️",
-      description: "Connect with like-minded individuals for accountability",
-      color: "accent-gold"
+      icon: <TrendingUp className="w-8 h-8" />,
+      title: "Financial Growth",
+      description: "Track expenses, investments, and build wealth through disciplined habits.",
+      color: "accent-necromancy",
+      progress: 67
     },
     {
-      title: "Achievement System",
-      icon: "🏆",
-      description: "Celebrate breakthrough moments and major milestones",
-      color: "accent-electric"
+      icon: <Trophy className="w-8 h-8" />,
+      title: "Spiritual Awakening",
+      description: "Cultivate inner peace, purpose, and connection to something greater.",
+      color: "accent-energy",
+      progress: 88
     }
   ];
 
-  // Mock data for the assessment chart - 6 domains
-  const domainScores = [
-    { domain: 'Physical', score: 7.2 },
-    { domain: 'Mental', score: 8.5 },
-    { domain: 'Emotional', score: 6.8 },
-    { domain: 'Social', score: 7.9 },
-    { domain: 'Financial', score: 6.5 },
-    { domain: 'Spiritual', score: 7.3 }
+  const assessmentScores = [
+    { domain: "Physical", score: 7, maxScore: 10, color: "accent-strength" },
+    { domain: "Mental", score: 8, maxScore: 10, color: "accent-shadow" },
+    { domain: "Emotional", score: 6, maxScore: 10, color: "accent-danger" },
+    { domain: "Social", score: 9, maxScore: 10, color: "accent-mana" },
+    { domain: "Financial", score: 5, maxScore: 10, color: "accent-necromancy" },
+    { domain: "Spiritual", score: 7, maxScore: 10, color: "accent-energy" }
   ];
 
-  const CircularProgress = ({ score, domain, index }) => {
-    const colors = [
-      'accent-electric', 'accent-energy', 'accent-growth', 
-      'accent-wisdom', 'accent-gold', 'accent-mana'
-    ];
-    const percentage = (score / 10) * 100;
-    const strokeDasharray = 2 * Math.PI * 28; // 2 * PI * radius
-    const strokeDashoffset = strokeDasharray - (strokeDasharray * percentage) / 100;
-    
-    return (
-      <div className="text-center">
-        <div className="relative w-16 h-16 mx-auto mb-2">
-          <svg className="w-16 h-16 transform -rotate-90">
-            <circle
-              cx="32"
-              cy="32"
-              r="28"
-              stroke="currentColor"
-              strokeWidth="4"
-              fill="none"
-              className="text-bg-elevated"
-            />
-            <circle
-              cx="32"
-              cy="32"
-              r="28"
-              stroke={`var(--${colors[index]})`}
-              strokeWidth="4"
-              fill="none"
-              strokeDasharray={strokeDasharray}
-              strokeDashoffset={strokeDashoffset}
-              className="transition-all duration-1000 ease-out"
-              style={{
-                animationDelay: `${index * 0.2}s`,
-                strokeLinecap: 'round'
-              }}
-            />
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-xs font-semibold text-white">{score}</span>
-          </div>
-        </div>
-        <div className="text-xs text-text-tertiary">{domain}</div>
-      </div>
-    );
-  };
-
   return (
-    <section id="features" className="py-24 bg-bg-primary relative overflow-hidden">
-      {/* Background Image */}
-      <div 
+    <section id="features" className="py-24 bg-bg-secondary relative overflow-hidden">
+      {/* Optimized Background Image */}
+      <OptimizedImage
+        src="https://images4.alphacoders.com/136/1369363.jpeg"
+        alt="Features Background"
         className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: 'url(https://images4.alphacoders.com/136/1369363.jpeg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
-        }}
       />
 
       {/* Background Effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-accent-electric/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-accent-energy/20 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-accent-strength/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-accent-shadow/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            Your Personal{' '}
-            <span className="gradient-text">Evolution Engine</span>
+            Your Personal <span className="shadow-gradient-text">Evolution Engine</span>
           </h2>
+          <p className="text-xl lg:text-2xl text-text-secondary">
+            Master all 6 life domains with precision tracking and systematic improvement
+          </p>
         </div>
 
-        {/* Main Feature - Assessment Matrix */}
-        <div className="mb-16">
-          <div className="bg-bg-elevated/50 glass-effect rounded-3xl p-8 lg:p-12 max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left - Content */}
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 bg-accent-electric/20 text-accent-electric px-4 py-2 rounded-full text-sm font-medium">
-                  <span className="w-2 h-2 bg-accent-electric rounded-full animate-pulse"></span>
-                  Live Assessment
-                </div>
-                
-                <h3 className="text-3xl lg:text-4xl font-bold">
-                  6-Domain Life Assessment
-                </h3>
-                
-                <p className="text-xl text-text-secondary leading-relaxed">
-                  Get real-time insights into your life balance with our comprehensive 
-                  assessment system. Track progress across all domains and identify 
-                  areas for focused improvement.
-                </p>
-
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-accent-electric rounded-full"></div>
-                    <span className="text-text-secondary">Real-time scoring algorithm</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-accent-growth rounded-full"></div>
-                    <span className="text-text-secondary">Personalized improvement suggestions</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-accent-wisdom rounded-full"></div>
-                    <span className="text-text-secondary">Historical trend analysis</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right - Interactive Chart */}
-              <div className="relative">
-                <div className="bg-bg-secondary/80 rounded-2xl p-6">
-                  <div className="text-center mb-6">
-                    <div className="text-4xl font-bold text-accent-electric mb-2">7.5</div>
-                    <div className="text-text-tertiary">Overall Score</div>
-                  </div>
-                  
-                  {/* Domain Progress Rings */}
-                  <div className="grid grid-cols-2 gap-4">
-                    {domainScores.map((item, index) => (
-                      <CircularProgress
-                        key={item.domain}
-                        score={item.score}
-                        domain={item.domain}
-                        index={index}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Feature Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="bg-bg-elevated/30 glass-effect rounded-2xl p-6 hover:scale-105 hover:shadow-2xl transition-all duration-500 group relative"
+              className="shadow-glass rounded-2xl p-8 hover:bg-bg-elevated/50 transition-all duration-300 group cursor-pointer"
+              onMouseEnter={() => setHoveredFeature(index)}
+              onMouseLeave={() => setHoveredFeature(null)}
             >
-              {/* Icon */}
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                {feature.icon}
+              <div className={`w-16 h-16 rounded-xl bg-${feature.color}/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`text-${feature.color}`}>
+                  {feature.icon}
+                </div>
               </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-bold mb-3 text-white">
+              
+              <h3 className="text-xl font-bold text-white mb-4">
                 {feature.title}
               </h3>
-
-              {/* Description */}
-              <p className="text-text-secondary leading-relaxed">
+              
+              <p className="text-text-secondary mb-6 leading-relaxed">
                 {feature.description}
               </p>
 
-              {/* Hover Accent */}
-              <div 
-                className="absolute bottom-0 left-0 right-0 h-1 rounded-b-2xl transition-all duration-300 group-hover:h-2"
-                style={{background: `var(--${feature.color})`}}
-              ></div>
+              {/* Progress Bar */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-text-tertiary">Progress</span>
+                  <span className={`text-${feature.color} font-semibold`}>
+                    {feature.progress}%
+                  </span>
+                </div>
+                <div className="w-full bg-bg-primary/50 rounded-full h-2">
+                  <div
+                    className={`bg-${feature.color} h-2 rounded-full transition-all duration-1000 ease-out`}
+                    style={{
+                      width: hoveredFeature === index ? `${feature.progress}%` : '0%'
+                    }}
+                  />
+                </div>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* Live Assessment Demo */}
+        <div className="shadow-glass rounded-3xl p-8 lg:p-12 max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h3 className="text-3xl font-bold text-white mb-4">
+              Live Assessment
+            </h3>
+            <p className="text-xl text-text-secondary">
+              6-Domain Life Assessment
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {assessmentScores.map((item, index) => {
+              const percentage = (item.score / item.maxScore) * 100;
+              const circumference = 2 * Math.PI * 45;
+              const strokeDasharray = circumference;
+              const strokeDashoffset = circumference - (percentage / 100) * circumference;
+
+              return (
+                <div key={item.domain} className="text-center group">
+                  <div className="relative w-32 h-32 mx-auto mb-4">
+                    {/* Background Circle */}
+                    <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="45"
+                        stroke="currentColor"
+                        strokeWidth="8"
+                        fill="transparent"
+                        className="text-bg-primary/50"
+                      />
+                      {/* Progress Circle */}
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="45"
+                        stroke={`var(--${item.color})`}
+                        strokeWidth="8"
+                        fill="transparent"
+                        strokeDasharray={strokeDasharray}
+                        strokeDashoffset={strokeDashoffset}
+                        strokeLinecap="round"
+                        className="transition-all duration-1000 ease-out"
+                      />
+                    </svg>
+                    {/* Score Text */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className={`text-2xl font-bold text-${item.color}`}>
+                          {item.score}
+                        </div>
+                        <div className="text-xs text-text-tertiary">
+                          /{item.maxScore}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <h4 className="text-lg font-semibold text-white mb-2">
+                    {item.domain}
+                  </h4>
+                  
+                  <div className={`text-sm text-${item.color} font-medium`}>
+                    {item.score >= 8 ? 'S-Rank' : item.score >= 6 ? 'A-Rank' : item.score >= 4 ? 'B-Rank' : 'C-Rank'}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { Play, ArrowRight, Download, Smartphone } from 'lucide-react';
+import { Play, ArrowRight, Download } from 'lucide-react';
+import OptimizedImage from './OptimizedImage';
 
 const HeroSection = () => {
   const domains = [
@@ -10,29 +11,18 @@ const HeroSection = () => {
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-bg-primary via-bg-secondary to-bg-elevated relative overflow-hidden">
-      {/* Solo Leveling Background Image */}
-      <div 
+      {/* Optimized Solo Leveling Background Image */}
+      <OptimizedImage
+        src="https://4kwallpapers.com/images/walls/thumbs_3t/15351.jpg"
+        alt="Solo Leveling Background"
         className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage: 'url(https://4kwallpapers.com/images/walls/thumbs_3t/15351.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      ></div>
+        loading="eager"
+      />
 
-      {/* Solo Leveling Background Effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-accent-shadow/30 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-monarch/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent-necromancy/10 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* Shadow Hunter Portal Effect */}
+      {/* Simplified Background Effects */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-accent-shadow/5 via-transparent to-accent-monarch/5"></div>
-        <div className="absolute top-1/3 left-1/4 w-64 h-64 border border-accent-shadow/20 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-48 h-48 border border-accent-monarch/20 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-accent-shadow/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-monarch/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-6 py-12 relative z-10">
@@ -49,7 +39,7 @@ const HeroSection = () => {
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
                 Awaken Your True{' '}
-                <span className="shadow-gradient-text animate-shadow-pulse">Potential</span>
+                <span className="shadow-gradient-text">Potential</span>
               </h1>
               
               <p className="text-xl lg:text-2xl text-text-secondary leading-relaxed max-w-2xl">
@@ -61,12 +51,12 @@ const HeroSection = () => {
             {/* Power Level Stats */}
             <div className="flex items-center gap-8 py-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent-shadow animate-shadow-pulse">6</div>
+                <div className="text-3xl font-bold text-accent-shadow">6</div>
                 <div className="text-sm text-text-tertiary">Power Domains</div>
               </div>
               <div className="w-px h-12 bg-accent-shadow/30"></div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent-mana animate-monarch-glow">∞</div>
+                <div className="text-3xl font-bold text-accent-mana">∞</div>
                 <div className="text-sm text-text-tertiary">Level Cap</div>
               </div>
               <div className="w-px h-12 bg-accent-shadow/30"></div>
@@ -78,17 +68,26 @@ const HeroSection = () => {
 
             {/* CTA Buttons - Solo Leveling Style */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-accent-shadow text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-accent-shadow/90 transition-all duration-300 flex items-center justify-center gap-3 group animate-shadow-pulse monarch-energy">
+              <button 
+                onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-accent-shadow text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-accent-shadow/90 transition-all duration-300 flex items-center justify-center gap-3 group"
+              >
                 Begin Your Awakening
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
               
-              <button className="bg-accent-monarch text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-accent-monarch/90 transition-all duration-300 flex items-center justify-center gap-3 group animate-monarch-glow">
+              <button 
+                onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-accent-monarch text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-accent-monarch/90 transition-all duration-300 flex items-center justify-center gap-3 group"
+              >
                 <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 Download App
               </button>
               
-              <button className="border-2 border-accent-mana/50 text-accent-mana px-8 py-4 rounded-xl font-semibold text-lg hover:bg-accent-mana/10 transition-all duration-300 flex items-center justify-center gap-3 group">
+              <button 
+                onClick={() => document.getElementById('preview')?.scrollIntoView({ behavior: 'smooth' })}
+                className="border-2 border-accent-mana/50 text-accent-mana px-8 py-4 rounded-xl font-semibold text-lg hover:bg-accent-mana/10 transition-all duration-300 flex items-center justify-center gap-3 group"
+              >
                 <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
                 Watch Preview
               </button>
@@ -96,17 +95,17 @@ const HeroSection = () => {
 
             {/* Shadow Guild Counter */}
             <p className="text-text-tertiary">
-              Join <span className="text-accent-shadow font-semibold animate-pulse">3,247</span> Shadow Hunters
+              Join <span className="text-accent-shadow font-semibold">3,247</span> Shadow Hunters
             </p>
           </div>
 
           {/* Right Visual - 45% Solo Leveling System */}
           <div className="lg:col-span-5 relative">
-            <div className="shadow-shape bg-gradient-to-br from-bg-elevated to-bg-secondary p-8 relative overflow-hidden shadow-glass">
+            <div className="shadow-glass bg-gradient-to-br from-bg-elevated to-bg-secondary p-8 relative overflow-hidden rounded-3xl">
               {/* Shadow System Visualization */}
               <div className="relative w-full h-96 flex items-center justify-center">
                 {/* Central Shadow Hunter Avatar */}
-                <div className="absolute z-10 w-20 h-20 bg-gradient-to-r from-accent-shadow to-accent-monarch rounded-full flex items-center justify-center shadow-2xl animate-shadow-pulse">
+                <div className="absolute z-10 w-20 h-20 bg-gradient-to-r from-accent-shadow to-accent-monarch rounded-full flex items-center justify-center shadow-2xl">
                   <div className="w-16 h-16 bg-bg-primary rounded-full flex items-center justify-center border-2 border-accent-shadow/50">
                     <span className="text-2xl">🗡️</span>
                   </div>
@@ -118,7 +117,7 @@ const HeroSection = () => {
                 </div>
 
                 {/* Power Level */}
-                <div className="absolute top-4 right-4 bg-accent-shadow/90 text-white px-3 py-1 rounded-full text-sm font-bold border border-accent-shadow shadow-lg animate-pulse">
+                <div className="absolute top-4 right-4 bg-accent-shadow/90 text-white px-3 py-1 rounded-full text-sm font-bold border border-accent-shadow shadow-lg">
                   Lv. 127
                 </div>
 
@@ -154,7 +153,7 @@ const HeroSection = () => {
                   );
                 })}
 
-                {/* Mana Flow Lines */}
+                {/* Simplified Mana Flow Lines */}
                 <svg className="absolute inset-0 w-full h-full" style={{animationDuration: '20s'}}>
                   {domains.map((_, index) => {
                     const angle1 = (index * 60) - 90;
@@ -173,18 +172,12 @@ const HeroSection = () => {
                         x2={x2}
                         y2={y2}
                         stroke="var(--accent-shadow)"
-                        strokeWidth="2"
-                        opacity="0.4"
-                        className="animate-pulse"
-                        style={{animationDelay: `${index * 0.2}s`}}
+                        strokeWidth="1"
+                        opacity="0.3"
                       />
                     );
                   })}
                 </svg>
-
-                {/* Power Aura Effect */}
-                <div className="absolute inset-0 border-2 border-accent-shadow/30 rounded-full animate-pulse"></div>
-                <div className="absolute inset-4 border border-accent-monarch/20 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
               </div>
             </div>
           </div>
